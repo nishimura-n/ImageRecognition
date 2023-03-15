@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import './App.css';
 import axios from "axios";
+import "./App.css"
+import {BrowserRouter as Router, Route, Routes, Navigate} from "react-router-dom";
+import Main from "./pages/main/Main";
 
 //あああ
 function App() {
@@ -69,29 +71,34 @@ const handleupdate = () => {
 }
 
   return (
-    <div className="App">
-     <ul>
-       {categoryList.map((val, index) => {
-         return <li key={index}>id→{val.id} | name→{val.name} | status→{val.status}</li>
-       })}
-     </ul>
-     <form onSubmit={handlecreate}>
-     <input type = "text" onChange={handleChangeName} value={name_id} placeholder={"作成したい名前を入れて"}/>
-     <input type = "text" onChange={handleChangeStatus} value={status_id} placeholder={"作成したい状態を入れて"}/>
-     <input type="submit" value="create" />
-     </form>
-     <br/>
-     <form onSubmit={handleupdate}>
-     <input type = "text" onChange={handleChangeUpdateStatus} value={update_status} placeholder={"更新したい状態を入れて"}/>
-     <input type = "number" onChange={handleChangeUpdateid} value={update_id} placeholder={"更新したいIDを入れて"}/>
-     <input type="submit" value="update" />
-     </form>
-     <br/>
-     <form onSubmit={handledelete}>
-     <input type = "number" onChange={handleChangeId} value={id} placeholder={"削除したいIDを入れて"}/>
-     <input type="submit" value="delete" />
-     </form>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={ <Main/>}/>
+      </Routes>
+    </Router>
+    // <div className="App">
+    //  <ul>
+    //    {categoryList.map((val, index) => {
+    //      return <li key={index}>id→{val.id} | name→{val.name} | status→{val.status}</li>
+    //    })}
+    //  </ul>
+    //  <form onSubmit={handlecreate}>
+    //  <input type = "text" onChange={handleChangeName} value={name_id} placeholder={"作成したい名前を入れて"}/>
+    //  <input type = "text" onChange={handleChangeStatus} value={status_id} placeholder={"作成したい状態を入れて"}/>
+    //  <input type="submit" value="create" />
+    //  </form>
+    //  <br/>
+    //  <form onSubmit={handleupdate}>
+    //  <input type = "text" onChange={handleChangeUpdateStatus} value={update_status} placeholder={"更新したい状態を入れて"}/>
+    //  <input type = "number" onChange={handleChangeUpdateid} value={update_id} placeholder={"更新したいIDを入れて"}/>
+    //  <input type="submit" value="update" />
+    //  </form>
+    //  <br/>
+    //  <form onSubmit={handledelete}>
+    //  <input type = "number" onChange={handleChangeId} value={id} placeholder={"削除したいIDを入れて"}/>
+    //  <input type="submit" value="delete" />
+    //  </form>
+    // </div>
   );
 }
 

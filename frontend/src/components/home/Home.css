@@ -1,0 +1,36 @@
+.homeContainer {
+  margin: 40px ;
+  color: white;
+
+}
+
+.uploadImage{
+  display:flex;
+  border: 2px solid #333333;
+}
+
+.imageContainer{
+  display: flex;
+  align-items: center;
+}
+
+.cloudIcons{
+  margin: 20px;
+  background-color: transparent;
+}
+
+.imageText{
+  color:white;
+}
+
+.imageButton{
+  margin-left: 60px;
+}
+
+.outputImage{
+  margin: 40px !important;
+}
+
+.outputPrice {
+  margin: 40px !important;
+}

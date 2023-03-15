@@ -1,0 +1,23 @@
+.headerContainer {
+  background-color: black;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  color: white;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.haederLeft {
+  flex: 9;
+}
+
+.headerRight {
+  flex: 3;
+  text-align: right;
+  justify-content: space-around;
+  color: white;
+}
