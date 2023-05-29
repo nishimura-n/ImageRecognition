@@ -25,6 +25,14 @@ function Data(props) {
     axios.delete(url, {
       data: payload
     }) // 正常にAPIコールできる
+    axios.get("http://localhost:5005/image/read")
+      .then((response) => {
+        const newData = response.data;
+        setCategoryList(newData);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   } catch(e) {
     console.error(e)
   }
@@ -32,10 +40,15 @@ function Data(props) {
 
    //画像の一覧データを取得
    useEffect(() => {
-       axios.get("http://localhost:5005/image/read").then((response) => {
-       setCategoryList(response.data);
-     });
-   }, [categoryList]);
+    axios.get("http://localhost:5005/image/read")
+      .then((response) => {
+        const newData = response.data;
+        setCategoryList(newData);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }, []);
 
   return(
     <div className="DataContainer">
