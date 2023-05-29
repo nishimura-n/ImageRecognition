@@ -8,6 +8,7 @@ import axios from "axios";
 function Home() {
   const [value,setValue] = useState(null);
   const [file,setFile] = useState(null);
+  const [ans,setAns] = useState("");
   const [image, setImage] = useState('./default.png');
   const [img_src, setImg_src] = useState("");
 
@@ -23,14 +24,16 @@ function Home() {
   //最新の画像を表示するために場合に分けた値を代入
   useEffect(() => {
     setValue(1);//データベースの画像を表示ボタンからの表示の場合
+    console.log(img_src)
   }, [img_src]);
   useEffect(() => {
     setValue(2);//アップロードによる画像の表示の場合
+    console.log(image)
   }, [image]);
 
   const handleSubmit = async(e) => {
     //リロードをしないようにする．
-    e.preventDefault();
+    //e.preventDefault();
     //FormDataでfileを取得する．
     const form = new FormData();
     form.append("file", file);
@@ -40,6 +43,31 @@ function Home() {
         }catch(err){
             console.log(err);
         }
+  }
+
+  const handleClick = async() => {
+    const bodyData = {
+      image_url: value === 1 ? img_src : image, // 仮の画像URL
+    };
+
+    fetch('http://localhost:5004/image/judgement', {
+    method: 'POST',
+    mode: 'cors', // リクエストモードを指定
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(bodyData),
+  })
+    .then(response => response.json())
+    .then(data => {
+      // レスポンスデータを処理
+      setAns(data)
+      console.log(data);
+    })
+    .catch(error => {
+      // エラーハンドリング
+      console.error('Error:', error);
+    });
   }
 
   return (
@@ -81,7 +109,78 @@ function Home() {
             )}
           </div>
           <div className="outputPrice">
-            <p style={{color:"white"}}> <strong>Price</strong></p>
+            <p style={{color:"white"}}> <strong>classification</strong></p>
+            <p style={{color:"white"}}>(飛行機，自動車，鳥，猫，鹿，犬，蛙，馬，船，トラックの10種類の中から判別します)</p>
+            {value === 1 && (
+               <>
+               <button onClick={handleClick} style={{color:"white"}}>予測を表示</button>
+               {ans === 0 && (
+               <p>この画像は飛行機と推測されます．</p>
+               )}
+               {ans === 1 && (
+               <p>この画像は自動車と推測されます．</p>
+               )}
+               {ans === 2 && (
+               <p>この画像は鳥と推測されます．</p>
+               )}
+               {ans === 3 && (
+               <p>この画像は猫と推測されます．</p>
+               )}
+               {ans === 4 && (
+               <p>この画像は鹿と推測されます．</p>
+               )}
+               {ans === 5 && (
+               <p>この画像は犬と推測されます．</p>
+               )}
+               {ans === 6 && (
+               <p>この画像は蛙と推測されます．</p>
+               )}
+               {ans === 7 && (
+               <p>この画像は馬と推測されます．</p>
+               )}
+               {ans === 8 && (
+               <p>この画像は船と推測されます．</p>
+               )}
+               {ans === 9 && (
+               <p>この画像はトラックと推測されます．</p>
+               )}
+               </>
+            )}
+            {value === 2 && (
+               <>
+               <button onClick={handleClick} style={{color:"white"}}>予測を表示</button>
+               {ans === 0 && (
+               <p>この画像は飛行機と推測されます．</p>
+               )}
+               {ans === 1 && (
+               <p>この画像は自動車と推測されます．</p>
+               )}
+               {ans === 2 && (
+               <p>この画像は鳥と推測されます．</p>
+               )}
+               {ans === 3 && (
+               <p>この画像はねこと推測されます．</p>
+               )}
+               {ans === 4 && (
+               <p>この画像はシカと推測されます．</p>
+               )}
+               {ans === 5 && (
+               <p>この画像は犬と推測されます．</p>
+               )}
+               {ans === 6 && (
+               <p>この画像はカエルと推測されます．</p>
+               )}
+               {ans === 7 && (
+               <p>この画像は馬と推測されます．</p>
+               )}
+               {ans === 8 && (
+               <p>この画像は船と推測されます．</p>
+               )}
+               {ans === 9 && (
+               <p>この画像はトラックと推測されます．</p>
+               )}
+               </>
+            )}
           </div>
         </SplitPane>
 
