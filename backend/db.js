@@ -5,7 +5,7 @@ const env = process.env;
 const client = mysql.createConnection({
     //host: 'localhost', <-これだとmy.cnfにあるbind-addressの設定により接続できない．
     host: '127.0.0.1',
-    user: 'node',
+    user: 'root',
     password: env.PASS,
     port : 3306,
     database: 'sample'

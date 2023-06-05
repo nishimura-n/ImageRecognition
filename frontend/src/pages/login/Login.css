@@ -1,0 +1,29 @@
+.formContainer {
+  color: #F7F7F7;
+  text-align: center;
+}
+
+.loginButton{
+  color: #F7F7F7;
+}
+
+.formField{
+  color: #F7F7F7;
+}
+
+
+.login_form_btm {
+  padding: 10px 0;
+  background-color: #F7F7F7;
+  margin: 10px 0;
+}
+
+input {
+  width: 200px;
+  padding: 3px;
+  margin: 5px 0;
+}
+
+/* .mainContainer{
+  background-color: white;
+} */
