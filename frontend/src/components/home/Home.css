@@ -1,7 +1,5 @@
 .homeContainer {
   margin: 40px ;
-  color: white;
-
 }
 
 .uploadImage{
@@ -29,6 +27,7 @@
 
 .outputImage{
   margin-left: 40px !important;
+  color: white;
 }
 
 .outputPrice {

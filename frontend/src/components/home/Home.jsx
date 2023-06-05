@@ -20,15 +20,15 @@ function Home() {
     setFile(fileObject);
     setImage(window.URL.createObjectURL(fileObject));
   };
-  
+
   //最新の画像を表示するために場合に分けた値を代入
   useEffect(() => {
     setValue(1);//データベースの画像を表示ボタンからの表示の場合
-    console.log(img_src)
+    // console.log(img_src)
   }, [img_src]);
   useEffect(() => {
     setValue(2);//アップロードによる画像の表示の場合
-    console.log(image)
+    // console.log(image)
   }, [image]);
 
   const handleSubmit = async(e) => {

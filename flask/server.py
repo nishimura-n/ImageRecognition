@@ -47,7 +47,7 @@ def judgement():
 
     # 画像を取得
     response = requests.get("http://localhost:3000/images/"+image_url)
-    
+
     # 画像を一時ファイルとして保存
     with open('temp_image.png', 'wb') as file:
         file.write(response.content)
