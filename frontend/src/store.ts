@@ -1,9 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import { persistReducer, persistStore } from 'redux-persist'
 import isAuthenticateReducer from "./feature/AuthSlice"
-
-
-// const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore({
   reducer: {
@@ -13,4 +9,7 @@ export const store = configureStore({
   },
 })
 
-// export const persistor = persistStore(store);
+// AppDispatchに型を代入
+export type AppDispatch = typeof store.dispatch;
+
+export type RootState=ReturnType<typeof store.getState>;

@@ -9,9 +9,6 @@ function Header() {
         <span className="logo">Image Recognition</span>
       </div>
 
-      {/* <div className="headerCenter">
-      </div> */}
-
       <div className='headerRight'>
         <DehazeIcon color="secondary"/>
       </div>
