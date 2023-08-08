@@ -1,11 +1,12 @@
 import React from 'react'
-import Header from '../../components/header/Header'
+import Header from '../../components/header/Header.tsx'
 import Home from '../../components/home/Home'
-import Login from '../login/Login'
-import { useSelector } from 'react-redux'
+import Login from '../login/Login.tsx'
+import { useAppSelector } from './../../hooks.ts'
 
 function Main() {
-  const isAuth = useSelector((store)=>store.isLogin.isAuthenticate)
+  // store.isLoginでいい理由は？
+  const isAuth = useAppSelector((store)=>store.isLogin)
   console.log("ログイン:"+isAuth)
   if(!isAuth){
     return <Login/>

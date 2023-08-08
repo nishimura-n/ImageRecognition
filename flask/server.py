@@ -40,6 +40,8 @@ def judgement():
     # POSTリクエストのデータを取得
     data = request.get_json()
 
+    print(data)
+
     # 受け取ったデータを処理
     image_url = data.get('image_url')  # POSTデータから特定のキーを取得する例
 

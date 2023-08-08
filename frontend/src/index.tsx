@@ -4,7 +4,9 @@ import App from './App';
 import {store} from "./store"
 import {Provider} from "react-redux"
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// document.getElementById('root')の戻り値はHTMLElement | null型
+// !をつけてnullでないことを明示的に示すことでnullチェックをスキップ
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
     <React.StrictMode>
         <Provider store={store}>

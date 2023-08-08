@@ -2,20 +2,26 @@ import React,{useState, useEffect} from 'react'
 import axios from "axios";
 import "./Data.css"
 
-function Data(props) {
-  const [categoryList, setCategoryList] = useState([]);
+// propsにstring指定してるのにhandleClickの引数内でstringを指定する理由 7/27
+type DataProps = {
+  setImg_src:(option: string) => void;
+};
+
+interface img_Data{
+  id:number,
+  file_src:string
+}
+
+function Data(props:DataProps) {
+  const [categoryList, setCategoryList] = useState<img_Data[]>([]);
 
   //画像を表示ボタンの処理
-  const handleClick = (option) => {
-    return(
-      <>
-       {props.setImg_src(option)}
-      </>
-    )
+  const handleClick = (option:string) => {
+    props.setImg_src(option)
   }
 
   //削除ボタンの処理
-  const handledelete = (image_id,image_src) => {//deleteだけaxiosの書き方が違う．
+  const handledelete = (image_id:number,image_src:string) => {//deleteだけaxiosの書き方が違う．
   try {
     const url = 'http://localhost:5005/image/delete'
     const payload = {
